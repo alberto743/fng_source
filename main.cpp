@@ -26,7 +26,7 @@ int main(int argc, char* argv[])
         .default_value(std::string("particles.json"))
         .required()
         .help("Output file in JSON format to store the particles generated");
-    
+
     program.add_argument("--verbose")
         .help("Dump particles to stdout")
         .default_value(false)
@@ -48,7 +48,9 @@ int main(int argc, char* argv[])
 
     // Initialize JSON output object
     json output_json;
-    output_json["particles"] = json::array();
+    if (explicit_outname) {
+        output_json["particles"] = json::array();
+    }
 
     // Generation of particles
     for(int i=0; i<samples; ++i) {
@@ -60,23 +62,27 @@ int main(int argc, char* argv[])
                       << p.E << std::endl;
         }
 
-        json pjson;
-        pjson["x"] = p.r.x;
-        pjson["y"] = p.r.y;
-        pjson["z"] = p.r.z;
-        pjson["u"] = p.u;
-        pjson["E"] = p.E;
-        output_json["particles"].push_back(pjson); 
+        if (explicit_outname) {
+            json pjson;
+            pjson["x"] = p.r.x;
+            pjson["y"] = p.r.y;
+            pjson["z"] = p.r.z;
+            pjson["u"] = p.u;
+            pjson["E"] = p.E;
+            output_json["particles"].push_back(pjson);
+        }
     }
 
     // Write output file
-    if (verbose) {
-        std::string output_json_serialized = output_json.dump();
-        std::cout << output_json_serialized << std::endl;
-    }
+    if (explicit_outname) {
+        if (verbose) {
+            std::string output_json_serialized = output_json.dump();
+            std::cout << output_json_serialized << std::endl;
+        }
 
-    std::ofstream outfile(outname);
-    outfile << std::setw(4) << output_json << std::endl;
+        std::ofstream outfile(outname);
+        outfile << std::setw(4) << output_json << std::endl;
+    }
 
     return 0;
 }

@@ -4,19 +4,15 @@
 
 #include <functional>
 
-struct Position
-{
-    double x;
-    double y;
-    double z;
-};
-
-
 struct Particle
 {
-    Position r;     // position
-    double u[3];    // direction
-    double E;       // energy
+    double rx;    // position
+    double ry;
+    double rz;
+    double ux;    // direction
+    double uy;
+    double uz;
+    double E;     // energy
 };
 
 

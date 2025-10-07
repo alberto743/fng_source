@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: Copyright © 2020 University of Liverpool
+// SPDX-FileCopyrightText: Copyright © 2025 ENEA
+
 #include <cmath> // for M_PI
 #include "openmc/random_lcg.h"
 #include "openmc/source.h"

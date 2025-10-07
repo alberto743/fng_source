@@ -1,3 +1,5 @@
+// SPDX-FileCopyrightText: Copyright © 2020 University of Liverpool
+
 const double angleDistribution[40][3] = {
   {-1.0000000, 0.0,         49.0},
   {-1.0000000, 0.024286326, 49.0},

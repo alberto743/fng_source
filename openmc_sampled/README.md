@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: Copyright © 2025 ENEA
+
+SPDX-License-Identifier: MPL-2.0
+-->
+
 # Notice
 
 The files in this directory come from the [SINBAD fusion benchmarks with UQ and OpenMC](https://github.com/AnderGray/openmc_uq_sinbad) project by [Andrer Gray](https://github.com/AnderGray).

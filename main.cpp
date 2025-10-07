@@ -57,17 +57,19 @@ int main(int argc, char* argv[])
         Particle p = fng_sample(prng_uniform);
 
         if (verbose) {
-            std::cout << p.r.x << " " << p.r.y << " " << p.r.z << " "
-                      << p.u[0] << " " << p.u[1] << " " << p.u[2] << " "
+            std::cout << p.rx << " " << p.ry << " " << p.rz << " "
+                      << p.ux << " " << p.uy << " " << p.uz << " "
                       << p.E << std::endl;
         }
 
         if (explicit_outname) {
             json pjson;
-            pjson["x"] = p.r.x;
-            pjson["y"] = p.r.y;
-            pjson["z"] = p.r.z;
-            pjson["u"] = p.u;
+            pjson["rx"] = p.rx;
+            pjson["ry"] = p.ry;
+            pjson["rz"] = p.rz;
+            pjson["ux"] = p.ux;
+            pjson["uy"] = p.uy;
+            pjson["uz"] = p.uz;
             pjson["E"] = p.E;
             output_json["particles"].push_back(pjson);
         }

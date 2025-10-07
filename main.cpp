@@ -83,7 +83,7 @@ int main(int argc, char* argv[])
         }
 
         std::ofstream outfile(outname);
-        outfile << std::setw(4) << output_json << std::endl;
+        outfile << std::setw(2) << output_json << std::endl;
     }
 
     return 0;

@@ -46,3 +46,6 @@
 
 # VSCode
 .vscode/
+
+# CMake
+build/

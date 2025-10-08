@@ -2,6 +2,9 @@
 //
 // SPDX-License-Identifier: MPL-2.0
 
+#ifndef FNGSRC_H
+#define FNGSRC_H
+
 #include <functional>
 
 struct Particle
@@ -17,3 +20,5 @@ struct Particle
 
 
 Particle fng_sample(const std::function<double()>& prng);
+
+#endif // FNGSRC_H

@@ -23,7 +23,7 @@ int main(int argc, char* argv[])
         .scan<'i', int>();
 
     program.add_argument("-o", "--output")
-        .default_value(std::string("particles.json"))
+        .default_value(std::string("-"))
         .required()
         .help("Output file in JSON format to store the particles generated");
 
@@ -48,40 +48,32 @@ int main(int argc, char* argv[])
 
     // Initialize JSON output object
     json output_json;
-    if (explicit_outname) {
-        output_json["particles"] = json::array();
-    }
+    output_json["particles"] = json::array();
 
     // Generation of particles
     for(int i=0; i<samples; ++i) {
         Particle p = fng_sample(prng_uniform);
 
+        json pjson;
+        pjson["rx"] = p.rx;
+        pjson["ry"] = p.ry;
+        pjson["rz"] = p.rz;
+        pjson["ux"] = p.ux;
+        pjson["uy"] = p.uy;
+        pjson["uz"] = p.uz;
+        pjson["E"] = p.E;
+
+        output_json["particles"].push_back(pjson);
+
         if (verbose) {
-            std::cout << p.rx << " " << p.ry << " " << p.rz << " "
-                      << p.ux << " " << p.uy << " " << p.uz << " "
-                      << p.E << std::endl;
+            std::cerr << "Particle: " << i << std::endl;
+            std::cerr << std::setw(2) << pjson << std::endl;
         }
 
-        if (explicit_outname) {
-            json pjson;
-            pjson["rx"] = p.rx;
-            pjson["ry"] = p.ry;
-            pjson["rz"] = p.rz;
-            pjson["ux"] = p.ux;
-            pjson["uy"] = p.uy;
-            pjson["uz"] = p.uz;
-            pjson["E"] = p.E;
-            output_json["particles"].push_back(pjson);
-        }
     }
 
     // Write output file
     if (explicit_outname) {
-        if (verbose) {
-            std::string output_json_serialized = output_json.dump();
-            std::cout << output_json_serialized << std::endl;
-        }
-
         std::ofstream outfile(outname);
         outfile << std::setw(2) << output_json << std::endl;
     }

@@ -1,6 +1,10 @@
 // SPDX-FileCopyrightText: Copyright © 2020 University of Liverpool
 
-const double angleDistribution[40][3] = {
+constexpr int FNGSAMPLED_LENPARS = 3;
+constexpr int FNGSAMPLED_LENANGS = 40;
+constexpr int FNGSAMPLED_LENENER = 126;
+
+constexpr double angleDistribution[FNGSAMPLED_LENANGS][FNGSAMPLED_LENPARS] = {
   {-1.0000000, 0.0,         49.0},
   {-1.0000000, 0.024286326, 49.0},
   {-0.9990482, 0.048576133, 48.0},
@@ -43,7 +47,7 @@ const double angleDistribution[40][3] = {
   {1.0000000, 1,            11.0}
 };
 
-const double EnergyGroup[40][3] = {
+constexpr double EnergyGroup[FNGSAMPLED_LENANGS][FNGSAMPLED_LENPARS] = {
   {-1.0000000, 0.0,         49.0},
   {-1.0000000, 0.024286326, 49.0},
   {-0.9990482, 0.048576133, 48.0},
@@ -88,7 +92,7 @@ const double EnergyGroup[40][3] = {
 
 /* example for -1 where the 49 energy distibution is */
 /* for other distributions just add a new column at the end of this for easier use with only one variable*/
-const double energyDistibution[127][40] = {
+constexpr double energyDistibution[FNGSAMPLED_LENENER][FNGSAMPLED_LENANGS] = {
   /* E, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11*/
   {13,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
   {13.02, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},

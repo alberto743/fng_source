@@ -51,7 +51,7 @@ class CompiledSource : public openmc::Source
     /* how to get random number */
     double rnd = openmc::prn(seed);
     /* check which theta will be used depending on the distribution*/
-    for(int i = 1; i < 40; i++) {
+    for(int i = 1; i <= FNGSAMPLED_LENANGS; i++) {
       if(rnd <= angleDistribution[i][1] && rnd > angleDistribution[i-1][1]) {
         a = angleDistribution[i-1][1];
         b = angleDistribution[i][1];
@@ -79,7 +79,7 @@ class CompiledSource : public openmc::Source
     /*  Here you need to define the energy of particle depending on the sampled direction */
     /* new randon number for energy distribution*/
     rnd = openmc::prn(seed);
-    for(int i = 1; i < 127; i++) {
+    for(int i = 1; i <= FNGSAMPLED_LENENER; i++) {
       if(rnd <= energyDistibution[i][index] && rnd > energyDistibution[i-1][index]) {
         /* energy between the lower and upper value sampled randomly*/
         particle.E = 1.e6*openmc::prn(seed)*(energyDistibution[i][0]-energyDistibution[i-1][0])+energyDistibution[i-1][0] * 1.e6;

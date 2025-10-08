@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: Copyright © 2025 ENEA
+//
+// SPDX-License-Identifier: MPL-2.0
+
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 #include <pybind11/functional.h>

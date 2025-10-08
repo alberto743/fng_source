@@ -7,7 +7,7 @@
 #include "openmc/particle.h"
 #include "fng_source.hpp"
 
-class CompiledSource : public openmc::CustomSource
+class CompiledSource : public openmc::Source
 {
   openmc::SourceSite sample(uint64_t* seed) const
   {
@@ -97,5 +97,5 @@ class CompiledSource : public openmc::CustomSource
 
 // C bindings
 extern "C" std::unique_ptr<CompiledSource> openmc_create_source(std::string parameter) {
-  return std::make_unique<CompiledSource>(energy);
+  return std::make_unique<CompiledSource>();
 }

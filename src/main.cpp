@@ -10,32 +10,29 @@
 #include "prng_uniform.hpp"
 #include "fng.hpp"
 
-
 using json = nlohmann::json;
-
 
 int main(int argc, char* argv[])
 {
     // Argument parser
     argparse::ArgumentParser program("FNG source sampler", "0.1");
     program.add_argument("particles")
-        .help("Number of particles to be generated")
-        .scan<'i', int>();
+      .help("Number of particles to be generated")
+      .scan<'i', int>();
 
     program.add_argument("-o", "--output")
-        .default_value(std::string("-"))
-        .required()
-        .help("Output file in JSON format to store the particles generated");
+      .default_value(std::string("-"))
+      .required()
+      .help("Output file in JSON format to store the particles generated");
 
     program.add_argument("--verbose")
-        .help("Dump particles to stdout")
-        .default_value(false)
-        .implicit_value(true);
+      .help("Dump particles to stdout")
+      .default_value(false)
+      .implicit_value(true);
 
     try {
         program.parse_args(argc, argv);
-    }
-    catch (const std::exception& err) {
+    } catch (const std::exception& err) {
         std::cerr << err.what() << std::endl;
         std::cerr << program;
         return 1;
@@ -51,8 +48,8 @@ int main(int argc, char* argv[])
     output_json["particles"] = json::array();
 
     // Generation of particles
-    for(int i=0; i<samples; ++i) {
-        Particle p = fng_sample(prng_uniform);
+    for (int i = 0; i < samples; ++i) {
+        Particle p = fng_sample_ag(prng_uniform);
 
         json pjson;
         pjson["rx"] = p.rx;
@@ -69,7 +66,6 @@ int main(int argc, char* argv[])
             std::cerr << "Particle: " << i << std::endl;
             std::cerr << std::setw(2) << pjson << std::endl;
         }
-
     }
 
     // Write output file

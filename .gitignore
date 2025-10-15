@@ -49,3 +49,6 @@
 
 # CMake
 build/
+
+# WIP
+wip*/

@@ -1,7 +1,7 @@
 <!--
 SPDX-FileCopyrightText: Copyright © 2025 ENEA
 
-SPDX-License-Identifier: MPL-2.0
+SPDX-License-Identifier: CC0-1.0
 -->
 
 # Notice

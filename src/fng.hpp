@@ -9,16 +9,15 @@
 
 struct Particle
 {
-    double rx;    // position
+    double rx; // position
     double ry;
     double rz;
-    double ux;    // direction
+    double ux; // direction
     double uy;
     double uz;
-    double E;     // energy
+    double E; // energy
 };
 
-
-Particle fng_sample(const std::function<double()>& prng);
+Particle fng_sample_ag(const std::function<double()>& prng);
 
 #endif // FNGSRC_H
